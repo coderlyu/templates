@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "ES2015",
+		"moduleResolution": "node",
+		"noEmitOnError": true,
+		"lib": [
+			"es5",
+			"DOM"
+		],
+		"strict": true,
+		"esModuleInterop": false,
+		"rootDir": "./",
+		"baseUrl": "./",
+		"allowJs": true,
+		"noImplicitAny": false,
+		"declaration": false,
+		"paths": {
+			"@app/*": ["src/*"],
+			"@env/*": ["src/environments/*"]
+		},
+		"types": ["jest"]
+	},
+	"include": ["./src/**/*.ts"],
+	"exclude": ["./src/**/*.css", "./src/**/*.scss", "./src/**/*.less", "./src/**/*.sass"],
+	"extensions": [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"]
+}

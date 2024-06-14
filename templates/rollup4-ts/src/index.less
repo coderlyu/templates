@@ -1,0 +1,41 @@
+
+//底部安全距离
+.safe-area-bottom(@height: 0px) {
+	padding-bottom: @height;
+
+	@supports (bottom: constant(safe-area-inset-bottom)) {
+		padding-bottom: calc(@height + constant(safe-area-inset-bottom));
+	}
+
+	@supports (bottom: env(safe-area-inset-bottom)) {
+		padding-bottom: calc(@height + env(safe-area-inset-bottom));
+	}
+}
+// 顶部安全距离
+.safe-area-top(@height: 0px) {
+	top: @height;
+
+	@supports (bottom: constant(safe-area-inset-top)) {
+		top: calc(@height + constant(safe-area-inset-top));
+	}
+
+	@supports (bottom: env(safe-area-inset-top)) {
+		top: calc(@height + env(safe-area-inset-top));
+	}
+}
+
+.safe-area-pd-top(@height: 0px) {
+	padding-top: @height;
+
+	@supports (bottom: constant(safe-area-inset-top)) {
+		padding-top: calc(@height + constant(safe-area-inset-top));
+	}
+
+	@supports (bottom: env(safe-area-inset-top)) {
+		padding-top: calc(@height + env(safe-area-inset-top));
+	}
+}
+html,body {
+	margin: 0;
+	padding: 0;
+}

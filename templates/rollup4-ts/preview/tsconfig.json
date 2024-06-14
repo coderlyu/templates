@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "ES2015",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "lib": [
+            "es5",
+            "DOM"
+        ],
+        "strict": true,
+        "esModuleInterop": false,
+        "rootDir": "./",
+        "baseUrl": "./",
+        "allowJs": true,
+        "noImplicitAny": false,
+        "declaration": true,
+        "declarationDir": "types",
+        "declarationMap": true,
+        "types": ["../types/index.d.ts"]
+    },
+    "exclude": ["dist"],
+    "include": ["*.ts", "*.tsx", "*.vue"],
+    "extensions": [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"],
+    "references": [{
+        "path": "./tsconfig.node.json"
+    }]
+}
