@@ -29,69 +29,90 @@ const plugins = (isPlugin = false) => {
 	].filter(Boolean)
 }
 
-const external = []
+// const external = []
 
 export default [
 	{
-		input: './src/index.ts',
+		input: './src/index.esm.js',
 		output: [
 			{
-				file: 'lib/index.cjs',
-				format: 'cjs',
-				name: 'MyLibrary',
-				exports: 'named',
-			},
-			{
-				file: 'lib/index.esm.js',
+				file: 'lib/index.poppeer.mjs',
 				format: 'es',
-			},
-			{
-				file: 'lib/index.umd.js',
-				format: 'umd',
-				name: 'MyLibrary',
+				name: 'ttt',
 				exports: 'named',
 			},
 		],
-		plugins: plugins(),
-		external,
-	},
-	// 插件
-	{
-		input: './src/plugins/html.ts',
-		output: [
-			{
-				file: 'lib/plugins/html.cjs',
-				name: 'HtmlPlugin',
-				format: 'cjs',
-			},
-			{
-				file: 'lib/plugins/html.esm.js',
-				name: 'HtmlPlugin',
-				format: 'es',
-			},
-			{
-				file: 'lib/plugins/html.umd.js',
-				name: 'HtmlPlugin',
-				format: 'umd',
-			},
-		],
-		plugins: plugins(),
-		external,
-	},
-	// dts，生成types，package.json（typings / types）
-	{
-		input: './src/index.ts',
-		output: {
-			file: 'types/index.d.ts',
-			format: 'es',
-		},
 		plugins: [
-			postcss({
-				extract: 'none.css',
-				minimize: true,
-				plugins: [autoprefixer],
+			commonjs(),
+			resolve(),
+			typescript({ tsconfig: './tsconfig.json' }),
+			babel({ babelHelpers: 'runtime', exclude: '**/node_modules/**' }),
+			eslint({
+				include: ['src/**/*.ts', 'preview/**/*.ts', 'test/**/*.ts'],
 			}),
-			dts(),
+			// terser(),
 		],
 	},
+	// {
+	// 	input: './src/index.ts',
+	// 	output: [
+	// 		{
+	// 			file: 'lib/index.cjs',
+	// 			format: 'cjs',
+	// 			name: 'MyLibrary',
+	// 			exports: 'named',
+	// 		},
+	// 		{
+	// 			file: 'lib/index.esm.js',
+	// 			format: 'es',
+	// 		},
+	// 		{
+	// 			file: 'lib/index.umd.js',
+	// 			format: 'umd',
+	// 			name: 'MyLibrary',
+	// 			exports: 'named',
+	// 		},
+	// 	],
+	// 	plugins: plugins(),
+	// 	external,
+	// },
+	// // 插件
+	// {
+	// 	input: './src/plugins/html.ts',
+	// 	output: [
+	// 		{
+	// 			file: 'lib/plugins/html.cjs',
+	// 			name: 'HtmlPlugin',
+	// 			format: 'cjs',
+	// 		},
+	// 		{
+	// 			file: 'lib/plugins/html.esm.js',
+	// 			name: 'HtmlPlugin',
+	// 			format: 'es',
+	// 		},
+	// 		{
+	// 			file: 'lib/plugins/html.umd.js',
+	// 			name: 'HtmlPlugin',
+	// 			format: 'umd',
+	// 		},
+	// 	],
+	// 	plugins: plugins(),
+	// 	external,
+	// },
+	// // dts，生成types，package.json（typings / types）
+	// {
+	// 	input: './src/index.ts',
+	// 	output: {
+	// 		file: 'types/index.d.ts',
+	// 		format: 'es',
+	// 	},
+	// 	plugins: [
+	// 		postcss({
+	// 			extract: 'none.css',
+	// 			minimize: true,
+	// 			plugins: [autoprefixer],
+	// 		}),
+	// 		dts(),
+	// 	],
+	// },
 ]
