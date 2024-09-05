@@ -1,5 +1,5 @@
 {
-    "name": "@vdian/image-preview",
+    "name": "@au/image-preview",
     "version": "0.0.5",
     "description": "image preview",
     "main": "lib/index.esm.js",
